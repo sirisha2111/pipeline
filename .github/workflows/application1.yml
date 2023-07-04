@@ -5,12 +5,12 @@ on:
         branches:
             - main
         paths:
-            - 'Backend/**'
+            - 'Application1/**'
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: shell_script_Backend
+            - name: shell_script_Application1
               run: |
-                echo "Msg comes from Backend Project"
+                echo "Msg comes from Application1 Project"
