@@ -1,0 +1,16 @@
+name: Application4
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - 'Application4/**'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: shell_script_Application4
+              run: |
+                echo "Msg comes from Application4 Project"
