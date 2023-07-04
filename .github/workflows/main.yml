@@ -1,0 +1,19 @@
+stages:
+  - Backend
+  - Frontend
+
+Backend:
+    stage: Backend
+    script:
+        - echo "MSG from Backend Project"
+    only:
+        changes:
+            - Backend/**/*
+
+Frontend:
+    stage: Frontend
+    script:
+        - echo "MSG from Frontend Project"
+    only:
+        changes:
+            - Frontend/**/*
