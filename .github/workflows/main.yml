@@ -22,7 +22,7 @@ jobs:
                 fi
             
             - name: shell_script
-              if: ${{ steps.check_commit.outputs.match == 'true'}}
+              if: ${{ steps.check_commit.outputs.match == 'true' }}
               run: |
                 echo "Msg comes from Backend Project"
 
