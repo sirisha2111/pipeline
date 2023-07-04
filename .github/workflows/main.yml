@@ -12,33 +12,33 @@ jobs:
             - name: checkout
               uses: actions/checkout@v1 
               
-            - name: check_commit_msg_backend
-              id: check_commit_backend
-              run: |
-                if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Backend/'; then
-                    echo "match=true" >> $GITHUB_OUTPUT
-                    echo $GITHUB_OUTPUT
-                else
-                    echo "match=false" >> $GITHUB_OUTPUT
-                fi
+#             - name: check_commit_msg_backend
+#               id: check_commit_backend
+#               run: |
+#                 if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Backend/'; then
+#                     echo "match=true" >> $GITHUB_OUTPUT
+#                     echo $GITHUB_OUTPUT
+#                 else
+#                     echo "match=false" >> $GITHUB_OUTPUT
+#                 fi
             
-            - name: shell_script_Backend
-              if: ${{ steps.check_commit_backend.outputs.match == 'true' }}
-              run: |
-                echo "Msg comes from Backend Project"
+#             - name: shell_script_Backend
+#               if: ${{ steps.check_commit_backend.outputs.match == 'true' }}
+#               run: |
+#                 echo "Msg comes from Backend Project"
 
-            - name: check_commit_msg_frontend
-              id: check_commit_frontend
-              run: |
-                if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Frontend/'; then
-                    echo "match=true" >> $GITHUB_OUTPUT
-                    echo $GITHUB_OUTPUT
-                else
-                    echo "match=false" >> $GITHUB_OUTPUT
-                fi
+#             - name: check_commit_msg_frontend
+#               id: check_commit_frontend
+#               run: |
+#                 if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Frontend/'; then
+#                     echo "match=true" >> $GITHUB_OUTPUT
+#                     echo $GITHUB_OUTPUT
+#                 else
+#                     echo "match=false" >> $GITHUB_OUTPUT
+#                 fi
               
-            - name: shell_script_Frontend
-              if: ${{ steps.check_commit_frontend.outputs.match == 'true' }}
-              run: |
-                echo "Msg comes from Frontend Project"
+#             - name: shell_script_Frontend
+#               if: ${{ steps.check_commit_frontend.outputs.match == 'true' }}
+#               run: |
+#                 echo "Msg comes from Frontend Project"
 
