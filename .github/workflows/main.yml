@@ -15,7 +15,7 @@ jobs:
             - name: check_commit_msg
               id: check_commit
               run: |
-                if [[ $(git log --no-merge --first-parent --name-only -- Backend/* | grep -Ev 'Backend/*') ]]; then
+                if [[ $(git log --first-parent --name-only -- Backend/* | grep -Ev 'Backend/*') ]]; then
                     echo "name=match::true >> $GITHUB_OUTPUT"
                 else
                     echo "name=match::false >> $GITHUB_OUTPUT"
