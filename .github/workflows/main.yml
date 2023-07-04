@@ -16,9 +16,9 @@ jobs:
               id: check_commit
               run: |
                 if [[ $(git log --first-parent --name-only -- Backend/ | grep -Ev 'Backend/') ]]; then
-                    echo "::$GITHUB_OUTPUT name={name}::{value}"
+                    echo "name=match::true >> $GITHUB_OUTPUT"
                 else
-                    echo "::$GITHUB_OUTPUT name={name}::{value}"
+                    echo "name=match::false >> $GITHUB_OUTPUT"
                 fi
             
             - name: shell_script
