@@ -12,7 +12,7 @@ jobs:
             - name: checkout
               uses: actions/checkout@v1 
               
-            - name: check_commit_msg
+            - name: check_commit_msg_backend
               id: check_commit_backend
               run: |
                 if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Backend/'; then
@@ -27,7 +27,7 @@ jobs:
               run: |
                 echo "Msg comes from Backend Project"
 
-            - name: check_commit_msg
+            - name: check_commit_msg_frontend
               id: check_commit_frontend
               run: |
                 if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Frontend/'; then
