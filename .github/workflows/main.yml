@@ -2,15 +2,27 @@ name: CI
 
 on:
     push:
-        paths:
-            - 'Backend/**'
+        branches:
+            - main
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1 
+            - name: checkout
+              uses: actions/checkout@v1 
+              
+            - name: check_commit_msg
+              id: check_commit
+              run: |
+                if [[ $(git logs --online --first-parent --name-only -- Backend/ | grep -Ev 'Backend/') ]]; then
+                    echo "::set-output name=match::true"
+                else
+                    echo "::set-output name=match::false"
+                fi
+            
             - name: shell_script
+              if: ${{ steps.check_commit.outputs.match == 'true'}}
               run: |
                 echo "Msg comes from Backend Project"
 
