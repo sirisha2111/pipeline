@@ -12,7 +12,7 @@ jobs:
             - name: check_commit_msg
               id: check_commit
               run: |
-                if [[ $(git log --first-parent --name-only -- Backend/ | grep -Ev 'Backend/') ]]; then
+                if git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -q '^Backend/'; then
                     echo "match=true" >> $GITHUB_OUTPUT
                     echo $GITHUB_OUTPUT
                 else
@@ -20,10 +20,7 @@ jobs:
                 fi
             
             - name: shell_script
+              if: ${{ steps.check_commit.outputs.match == 'true' }}
               run: |
-                if [[ ${{ steps.check_commit.outputs.match }}  == 'true' ]]; then
-                    echo "Msg comes from Backend Project"
-                else
-                    exit 1;
-                fi
+                echo "Msg comes from Backend Project"
 
