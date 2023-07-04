@@ -16,13 +16,13 @@ jobs:
               id: check_commit
               run: |
                 if [[ $(git log --first-parent --name-only -- Backend/ | grep -Ev 'Backend/') ]]; then
-                    echo "::$GITHUB_OUTPUT name=match::true"
+                    echo "::$GITHUB_OUTPUT name={name}::{value}"
                 else
-                    echo "::$GITHUB_OUTPUT name=match::false"
+                    echo "::$GITHUB_OUTPUT name={name}::{value}"
                 fi
             
             - name: shell_script
-              if: ${{ steps.check_commit.outputs.match == 'true' }}
+              if: ${{ steps.check_commit.outcome.match == 'true' }}
               run: |
                 echo "Msg comes from Backend Project"
 
