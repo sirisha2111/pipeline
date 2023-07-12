@@ -11,6 +11,8 @@ on:
             - '*'
         paths:
             - 'Application1/**'
+        types:
+            - opened
 
 jobs:
     build:
