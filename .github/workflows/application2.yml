@@ -7,8 +7,8 @@ on:
         paths-ignore:
             - 'Application1/**'
     pull_request:
-        types:
-            - opened
+        # types:
+        #     - opened
         branches:
             - 'main'
         paths-ignore:
