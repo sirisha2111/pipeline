@@ -1,16 +1,16 @@
-name: Application5
+# name: Application5
 
-on:
-    push:
-        branches:
-            - main
-        paths:
-            - 'Application5/**'
+# on:
+#     push:
+#         branches:
+#             - main
+#         paths:
+#             - 'Application5/**'
 
-jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: shell_script_Application5
-              run: |
-                echo "Msg comes from Application5 Project"
+# jobs:
+#     build:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: shell_script_Application5
+#               run: |
+#                 echo "Msg comes from Application5 Project"
