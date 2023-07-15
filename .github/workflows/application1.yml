@@ -3,12 +3,12 @@ name: Application1
 on:
     push:
         branches:
-            - '*'
+            - 'main'
         paths-ignore:
             - 'Application1/**'
     pull_request:
         branches:
-            - '*'
+            - 'main'
         paths-ignore:
             - 'Application1/**'
         types:

@@ -3,12 +3,12 @@ name: Application2
 on:
     push:
         branches:
-            - '*'
+            - 'main'
         paths:
             - 'Application2/**'
     pull_request:
         branches:
-            - '*'
+            - 'main'
         paths:
             - 'Application2/**'
 
