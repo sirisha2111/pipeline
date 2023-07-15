@@ -4,13 +4,13 @@ on:
     push:
         branches:
             - 'main'
-        paths:
-            - 'Application2/**'
+        paths-ignore:
+            - 'Application1/**'
     pull_request:
         branches:
             - 'main'
-        paths:
-            - 'Application2/**'
+        paths-ignore:
+            - 'Application1/**'
         types:
             - opened
 
