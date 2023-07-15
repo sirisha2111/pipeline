@@ -7,13 +7,14 @@ on:
         paths-ignore:
             - 'Application1/**'
     pull_request:
+        # types:
+        #     - opened
         branches:
             - 'main'
         paths-ignore:
             - 'Application1/**'
             - '.github/**'
-        types:
-            - opened
+        
 
 jobs:
     build:
