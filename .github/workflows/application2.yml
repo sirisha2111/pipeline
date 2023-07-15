@@ -11,6 +11,8 @@ on:
             - 'main'
         paths:
             - 'Application2/**'
+        types:
+            - opened
 
 jobs:
     build:
