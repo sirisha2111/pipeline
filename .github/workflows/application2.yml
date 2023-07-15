@@ -6,6 +6,7 @@ on:
             - 'main'
         paths-ignore:
             - 'Application1/**'
+            - '.github/**'
     pull_request:
         # types:
         #     - opened
