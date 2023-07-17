@@ -1,7 +1,6 @@
-ame: Application2
+name: Application2
 
 on:
-    workflow_dispatch:
     push:
         branches:
             - 'main'
