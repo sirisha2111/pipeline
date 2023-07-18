@@ -4,15 +4,15 @@ on:
     push:
         branches:
             - '*'
-        paths:
-            - 'Application1/**'
-    pull_request:
+#         paths:
+#             - 'Application1/**'
+#     pull_request:
         # types:
         #     - opened
-        branches:
-            - 'main'
-        paths:
-            - 'Application1/**'
+#         branches:
+#             - 'main'
+#         paths:
+#             - 'Application1/**'
         
 
 jobs:
