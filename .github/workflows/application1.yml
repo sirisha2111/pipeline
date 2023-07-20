@@ -3,7 +3,7 @@ name: Application1
 on:
     push:
         branches:
-            - '*'
+            - 'main || *'
 #         paths:
 #             - 'Application1/**'
 #     pull_request:
@@ -30,6 +30,7 @@ jobs:
             - run: npm --version
     build1:
         runs-on: ubuntu-20.04
+        if: success() && github.ref == 'refs/heads/main'
         steps:
             - name: shell_script_Application1
               run: |
