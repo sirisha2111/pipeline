@@ -19,10 +19,19 @@ jobs:
     build:
         runs-on: ubuntu-20.04
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3.5.3
+            # - name: Checkout
+            #   uses: actions/checkout@v3.5.3
+            - name: shell_script_Application1
+              run: |
+                mkdir test
+                ls
+                pwd
+            - run: node --version
+            - run: npm --version
+    build1:
+        runs-on: ubuntu-20.04
+        steps:
             - name: shell_script_Application1
               run: |
                 ls
-            - run: node --version
-            - run: npm --version
+                pwd
