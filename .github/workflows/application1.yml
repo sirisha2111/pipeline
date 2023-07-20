@@ -27,6 +27,7 @@ jobs:
                 ls
                 pwd
             - run: node --version
+              if: startsWith(github.ref, 'refs/heads/main')
             - run: npm --version
     build1:
         runs-on: ubuntu-20.04
