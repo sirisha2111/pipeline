@@ -3,8 +3,8 @@ name: Application2
 on:
     # workflow_dispatch:
     push:
-        branches:
-            - '*'
+      branches:
+        - '*'
     #     paths-ignore:
     #         - 'Application1/**'
     #         - '.github/**'
