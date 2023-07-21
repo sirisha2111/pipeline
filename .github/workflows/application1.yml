@@ -17,7 +17,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-lates
+        runs-on: ubuntu-latest
         steps:
             # - name: Checkout
             #   uses: actions/checkout@v3.5.3
@@ -33,7 +33,7 @@ jobs:
             - name: Install dependencies
               run: |
                 dotnet workload install maui
-                
+
     build1:
         runs-on: ubuntu-20.04
         if: success() && github.ref == 'refs/heads/main'
