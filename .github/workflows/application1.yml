@@ -17,7 +17,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-lates
         steps:
             # - name: Checkout
             #   uses: actions/checkout@v3.5.3
@@ -26,9 +26,14 @@ jobs:
                 mkdir test
                 ls
                 pwd
-            - run: node --version
-              if: startsWith(github.ref, 'refs/heads/main')
-            - run: npm --version
+            - name: Setup .NET Core SDK
+              uses: actions/setup-dotnet@v3.2.0
+              with:
+                dotnet-version: 6.0.x
+            - name: Install dependencies
+              run: |
+                dotnet workload install maui
+                
     build1:
         runs-on: ubuntu-20.04
         if: success() && github.ref == 'refs/heads/main'
