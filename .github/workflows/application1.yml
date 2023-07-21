@@ -17,19 +17,19 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         steps:
             # - name: Checkout
             #   uses: actions/checkout@v3.5.3
-            - name: shell_script_Application1
-              run: |
-                mkdir test
-                ls
-                pwd
+            # - name: shell_script_Application1
+            #   run: |
+            #     mkdir test
+            #     ls
+            #     pwd
             - name: Setup .NET Core SDK
               uses: actions/setup-dotnet@v3.2.0
               with:
-                dotnet-version: 7.0.x
+                dotnet-version: 6.0.x
             - name: Install dependencies
               run: |
                 dotnet workload install maui
