@@ -4,23 +4,43 @@ on:
     push:
         branches:
             - 'main'
-        paths:
-            - 'Application1/**'
+            - 'feature/*'
+#         paths:
+#             - 'Application1/**'
     pull_request:
         # types:
         #     - opened
         branches:
             - 'main'
-        paths:
-            - 'Application1/**'
+            - 'feature/*'
+        # paths:
+        #     - 'Application1/**'
         
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v3.5.3
             - name: shell_script_Application1
               run: |
+                dir
+              working-directory: Application4
+            - name: Setup .NET Core SDK
+              uses: actions/setup-dotnet@v3.2.0
+              with:
+                dotnet-version: 6.0.x
+            - name: Install dependencies
+              run: |
+                dir
+                # dotnet workload install maui
+
+    build1:
+        runs-on: ubuntu-20.04
+        if: success() && github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/*'
+        steps:
+            - name: shell_script_Application1
+              run: |
                 ls
+                pwd.

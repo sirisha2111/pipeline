@@ -1,20 +1,21 @@
 name: Application2
 
 on:
+    # workflow_dispatch:
     push:
-        branches:
-            - 'main'
-        paths-ignore:
-            - 'Application1/**'
-            - '.github/**'
-    pull_request:
-        # types:
-        #     - opened
-        branches:
-            - 'main'
-        paths-ignore:
-            - 'Application1/**'
-            - '.github/**'
+      branches:
+        - 'main'
+    #     paths-ignore:
+    #         - 'Application1/**'
+    #         - '.github/**'
+    # pull_request:
+    #     # types:
+    #     #     - opened
+    #     branches:
+    #         - 'main'
+    #     paths-ignore:
+    #         - 'Application1/**'
+    #         - '.github/**'
         
 
 jobs:
