@@ -35,6 +35,7 @@ jobs:
               if: success() && github.ref == 'refs/heads/feature/sample' || github.ref == 'refs/heads/main'
               run: |
                 dir
+                pwd.
                 # dotnet workload install maui
 
     build1:
@@ -45,4 +46,4 @@ jobs:
             - name: shell_script_Application1
               run: |
                 ls
-                pwd.
+                pwd
