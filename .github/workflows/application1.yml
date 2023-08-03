@@ -38,6 +38,7 @@ jobs:
                 # dotnet workload install maui
 
     build1:
+        needs: build
         runs-on: ubuntu-20.04
         if: success() && github.ref == 'refs/heads/feature/sample' || github.ref == 'refs/heads/main'
         steps:
