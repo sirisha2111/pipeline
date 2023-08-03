@@ -15,6 +15,7 @@ on:
             - 'feature/*'
         # paths:
         #     - 'Application1/**'
+    workflow_dispatch:
         
 
 jobs:
@@ -28,6 +29,7 @@ jobs:
                 dir
               working-directory: Application4
             - name: Setup .NET Core SDK
+              if: failure()
               uses: actions/setup-dotnet@v3.2.0
               with:
                 dotnet-version: 6.0.x
@@ -38,10 +40,11 @@ jobs:
                 # dotnet workload install maui
 
     build1:
+        needs: build
         runs-on: ubuntu-20.04
         if: success() && github.ref == 'refs/heads/feature/sample' || github.ref == 'refs/heads/main'
         steps:
             - name: shell_script_Application1
               run: |
                 ls
-                pwd.
+                pwd
