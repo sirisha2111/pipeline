@@ -3,15 +3,15 @@ name: Application1
 on:
     push:
         branches:
-            # - 'main'
+            - 'main'
             - 'feature*'
 #         paths:
 #             - 'Application1/**'
     pull_request:
-        types:
-            - opened
+        # types:
+        #     - opened
         branches:
-            # - 'main'
+            - 'main'
             - 'feature*'
         # paths:
         #     - 'Application1/**'
