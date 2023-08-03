@@ -3,7 +3,7 @@ name: Application1
 on:
     push:
         branches:
-            - 'main'
+            # - 'main'
             - 'feature*'
 #         paths:
 #             - 'Application1/**'
@@ -11,7 +11,7 @@ on:
         types:
             - opened
         branches:
-            - 'main'
+            # - 'main'
             - 'feature*'
         # paths:
         #     - 'Application1/**'
