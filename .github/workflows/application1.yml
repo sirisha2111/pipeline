@@ -4,7 +4,7 @@ on:
     push:
         branches:
             - 'main'
-            - 'feature*'
+            - 'feature/*'
 #         paths:
 #             - 'Application1/**'
     pull_request:
@@ -12,7 +12,7 @@ on:
         #     - opened
         branches:
             - 'main'
-            - 'feature*'
+            - 'feature/*'
         # paths:
         #     - 'Application1/**'
         
