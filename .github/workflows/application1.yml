@@ -38,7 +38,7 @@ jobs:
 
     build1:
         runs-on: ubuntu-20.04
-        if: success() && contains(github.base_ref, 'main') || contains(github.base_ref, 'feature/sample')
+        if: success() && contains(github.base_ref, 'feature/sample')
         steps:
             - name: shell_script_Application1
               run: |
