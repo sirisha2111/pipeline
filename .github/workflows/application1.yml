@@ -77,7 +77,7 @@ jobs:
             base: ${{ github.ref_name }}
             filters: |
               frontend:
-                - 'AngularApplications/**'
+                - 'Application1/**'
         # - name: Git Clone Action
         #   uses: sudosubin/git-clone-action@v1.0.1
         # - run: |
