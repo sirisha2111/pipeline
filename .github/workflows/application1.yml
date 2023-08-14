@@ -68,8 +68,10 @@ jobs:
         output2: ${{ steps.step1.outputs.pipeline }}
         output3: ${{ steps.step1.outputs.back_end }}
       steps:
-        - name: Checkout
-          uses: actions/checkout@v3.5.3
+        # - name: Checkout
+        #   uses: actions/checkout@v3.5.3
+        - name: Git Clone Action
+          uses: sudosubin/git-clone-action@v1.0.1
         # - run: |
         #     git diff-tree --no-commit-id --name-only -r ${{ github.ref_name }} | grep .github
         - id: step1
