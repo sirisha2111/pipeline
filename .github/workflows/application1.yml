@@ -4,14 +4,14 @@ on:
     push:
         branches:
             - 'main'
-            # - 'pipeline'
+            - 'pipeline'
 #         paths:
 #             - 'Application1/**'
-    pull_request:
-        # types:
-        #     - opened
-        branches:
-            - 'main'
+    # pull_request:
+    #     # types:
+    #     #     - opened
+    #     branches:
+    #         - 'main'
             # - 'pipeline'
         # paths:
         #     - 'Application1/**'
@@ -66,24 +66,22 @@ jobs:
       outputs:
         output1: ${{ steps.step1.outputs.front_end }}
         output2: ${{ steps.step1.outputs.pipeline }}
+        output3: ${{ steps.step1.outputs.back_end }}
       steps:
         - name: Checkout
           uses: actions/checkout@v3.5.3
         - id: step1
           run: |
-            # changedFiles=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
-            # changedFiles_pipeline=$(git diff --name-only HEAD .github)
-            # git diff --quiet HEAD .github
-            # if [ $? -eq 0 ]; then
-            #   echo "front_end=true" >> "$GITHUB_OUTPUT"
-            # else
-            #   echo "front_end=false" >> "$GITHUB_OUTPUT"
-            # fi
-            # if [ $changedFiles_pipeline == 0 ]; then
-            #   echo "front_end=true" >> "$GITHUB_OUTPUT"
-            # else
-            #   echo "front_end=false" >> "$GITHUB_OUTPUT"
-            # fi
+            changedFiles_App1=$(git diff-tree --name-only HEAD | grep Application1)
+            changedFiles_pipeline=$(git diff-tree --name-only HEAD | grep .github)
+
+            if [[ $changedFiles_App1 == Application1 ]]; then
+              echo "front_end=true" >> "$GITHUB_OUTPUT"
+            elif [[ $changedFiles_pipeline == .github ]]; then
+            echo "pipeline=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "back_end=true" >> "$GITHUB_OUTPUT"
+            fi
 
             # latestcommit=$(git log -n 1 --pretty=format:%s -- .github/)
             # if [ -n "$latestcommit" ]; then
@@ -91,17 +89,17 @@ jobs:
             # else
             #   echo "front_end=false" >> "$GITHUB_OUTPUT"
             # fi
-            lastcommitmsg=$(git rev-parse HEAD)
-            if git ls-tree -r $lastcommitmsg -- .github/ | grep -q ".github"; then
-              echo "front_end=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "front_end=false" >> "$GITHUB_OUTPUT"
-            fi
+            # lastcommitmsg=$(git rev-parse HEAD)
+            # if git ls-tree -r $lastcommitmsg -- .github/ | grep -q ".github"; then
+            #   echo "front_end=true" >> "$GITHUB_OUTPUT"
+            # else
+            #   echo "front_end=false" >> "$GITHUB_OUTPUT"
+            # fi
           # run: |
           #   modified_fies=$(git diff --name-only HEAD)
           #   echo "$modified_fies" | grep -qE '^\.github/' && echo "front_end=true" >> "$GITHUB_OUTPUT" || echo "front_end=false" >> "$GITHUB_OUTPUT"
-        - id: step2
-          run: git ls-tree -r $(git rev-parse HEAD) -- .github/ | grep -q ".github"
+        # - id: step2
+        #   run: git ls-tree -r $(git rev-parse HEAD) -- .github/ | grep -q ".github"
     job2:
       if: needs.job1.outputs.output1 == 'true' 
       runs-on: ubuntu-latest
@@ -118,7 +116,7 @@ jobs:
         - run: echo "Helloo from pipeline"
         
     job4:
-      if: needs.job1.outputs.output1 == 'false' 
+      if: needs.job1.outputs.output3 == 'true' 
       runs-on: ubuntu-latest
       needs: job1
       steps:
