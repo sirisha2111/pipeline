@@ -79,7 +79,7 @@ jobs:
           #   fi
           run: |
             modified_fies=$(git diff --name-only HEAD)
-            echo "$modified_fies" | grep -qE '^\.github/' && echo "front_end=true" >> "$GITHUB_OUTPUT" || echo "front_end=false" >> "$GITHUB_OUTPUT""
+            echo "$modified_fies" | grep -qE '^\.github/' && echo "front_end=true" >> "$GITHUB_OUTPUT" || echo "front_end=false" >> "$GITHUB_OUTPUT"
         - id: step2
           run: echo "test=world" >> "$GITHUB_OUTPUT"
     job2:
