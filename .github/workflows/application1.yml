@@ -79,7 +79,7 @@ jobs:
 
             if [[ $changedFiles_App1 == *"Application1"* ]]; then
               echo "front_end=true" >> "$GITHUB_OUTPUT"
-            elif [[ $changedFiles_pipeline == *".github"* ]]; then
+            elif [[ $changedFiles_App1 == *".github"* ]]; then
               echo "pipeline=true" >> "$GITHUB_OUTPUT"
             else
               echo "back_end=true" >> "$GITHUB_OUTPUT"
