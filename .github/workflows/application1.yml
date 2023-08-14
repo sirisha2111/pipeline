@@ -4,15 +4,15 @@ on:
     push:
         branches:
             - 'main'
-            - 'pipeline'
+            # - 'pipeline'
 #         paths:
 #             - 'Application1/**'
-    # pull_request:
-    #     # types:
-    #     #     - opened
-    #     branches:
-    #         - 'main'
-    #         - 'feature/*'
+    pull_request:
+        # types:
+        #     - opened
+        branches:
+            - 'main'
+            # - 'pipeline'
         # paths:
         #     - 'Application1/**'
     workflow_dispatch:
@@ -101,7 +101,7 @@ jobs:
           #   modified_fies=$(git diff --name-only HEAD)
           #   echo "$modified_fies" | grep -qE '^\.github/' && echo "front_end=true" >> "$GITHUB_OUTPUT" || echo "front_end=false" >> "$GITHUB_OUTPUT"
         - id: step2
-          run: git ls-tree -r $(git rev-parse HEAD) -- .github/ | grep -q ".github"
+          run: git ls-tree -r $(git rev-parse HEAD) -- .github/ | grep -q ".github
     job2:
       if: needs.job1.outputs.output1 == 'true' 
       runs-on: ubuntu-latest
