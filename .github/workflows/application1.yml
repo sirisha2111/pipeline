@@ -74,8 +74,8 @@ jobs:
             git diff-tree --no-commit-id --name-only -r $GITHUB_SHA
         - id: step1
           run: |
-            changedFiles_App1=$(git diff-tree --name-only HEAD | grep Application1)
-            changedFiles_pipeline=$(git diff-tree --name-only HEAD | grep .github)
+            changedFiles_App1=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep Application1)
+            changedFiles_pipeline=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep .github)
 
             if [[ $changedFiles_App1 == Application1 ]]; then
               echo "front_end=true" >> "$GITHUB_OUTPUT"
