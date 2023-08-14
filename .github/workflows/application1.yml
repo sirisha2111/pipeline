@@ -68,15 +68,15 @@ jobs:
         output2: ${{ steps.step1.outputs.pipeline }}
         output3: ${{ steps.step1.outputs.back_end }}
       steps:
-        # - name: Checkout
-        #   uses: actions/checkout@v3.5.3
-        - name: Git Clone Action
-          uses: sudosubin/git-clone-action@v1.0.1
+        - name: Checkout
+          uses: actions/checkout@v3.5.3
+        # - name: Git Clone Action
+        #   uses: sudosubin/git-clone-action@v1.0.1
         - run: |
             ls -lrt
         - id: step1
           run: |
-            changedFiles_App1=$(git diff-tree --name-only HEAD | grep .github)
+            changedFiles_App1=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
             changedFiles_pipeline=$(git diff-tree --no-commit-id --name-only -r $GITHUB_WORKFLOW_SHA)
 
             if [[ $changedFiles_App1 == *"Application1"* ]]; then
