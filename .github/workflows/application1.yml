@@ -124,13 +124,3 @@ jobs:
       steps:
         - run: echo "$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)"
         
-    build1:
-        needs: build
-        runs-on: ubuntu-20.04
-        if: success() && github.ref == 'refs/heads/feature/sample' || github.ref == 'refs/heads/main'
-        steps:
-            - name: shell_script_Application1
-              run: |
-                ls
-                pwd
-
