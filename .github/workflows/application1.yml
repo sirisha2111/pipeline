@@ -72,7 +72,7 @@ jobs:
         - id: step1
           run: |
             changedFiles=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
-            changedFiles_pipeline=$(git diff-tree --quit HEAD .github)
+            changedFiles_pipeline=$(git diff --quit HEAD .github)
             if [ $changedFiles_pipeline == 0 ]; then
               echo "front_end=true" >> "$GITHUB_OUTPUT"
             else
