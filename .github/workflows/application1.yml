@@ -91,7 +91,8 @@ jobs:
             # else
             #   echo "front_end=false" >> "$GITHUB_OUTPUT"
             # fi
-            if git ls-tree -r $GITHUB_SHA -- .github/ | grep -q ".github"; then
+            lastcommitmsg=$(git rev-parse HEAd)
+            if git ls-tree -r $lastcommitmsg -- .github/ | grep -q ".github"; then
               echo "front_end=true" >> "$GITHUB_OUTPUT"
             else
               echo "front_end=false" >> "$GITHUB_OUTPUT"
