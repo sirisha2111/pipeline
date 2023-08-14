@@ -73,7 +73,7 @@ jobs:
           run: |
             changedFiles=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
             changedFiles_pipeline=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
-            if [[ $changedFiles == *"Application1"* ]]; then
+            if [[ $changedFiles == *".github"* ]]; then
               echo "front_end=true" >> "$GITHUB_OUTPUT"
             elif [[ $changedFiles_pipeline == *"$PWD/.github"* ]]; then
               echo "pipeline=true" >> "$GITHUB_OUTPUT"
