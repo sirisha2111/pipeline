@@ -100,7 +100,7 @@ jobs:
           #   modified_fies=$(git diff --name-only HEAD)
           #   echo "$modified_fies" | grep -qE '^\.github/' && echo "front_end=true" >> "$GITHUB_OUTPUT" || echo "front_end=false" >> "$GITHUB_OUTPUT"
         - id: step2
-          run: echo "$(git log -n 1 --pretty=format:%s -- .github/)"
+          run: echo "$(git ls-tree -r $GITHUB_REF -- .github/ | grep -q ".github")"
     job2:
       if: needs.job1.outputs.output1 == 'true' 
       runs-on: ubuntu-latest
