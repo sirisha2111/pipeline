@@ -70,6 +70,9 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v3.5.3
+        - run: |
+            changedFiles_App1=$(git diff-tree --name-only HEAD | grep Application1)
+            echo $changedFiles_App1
         - id: step1
           run: |
             changedFiles_App1=$(git diff-tree --name-only HEAD | grep Application1)
