@@ -71,7 +71,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v3.5.3
         - run: |
-            git diff-tree --no-commit-id --name-only -r $GITHUB_REF | grep .github
+            git diff-tree --no-commit-id --name-only -r HEAD | grep .github
         - id: step1
           run: |
             changedFiles_App1=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA | grep Application1)
