@@ -5,6 +5,7 @@ on:
         branches:
             - 'main'
             - 'pipeline'
+            - 'feature/*'
 #         paths:
 #             - 'Application1/**'
     # pull_request:
