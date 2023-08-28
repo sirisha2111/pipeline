@@ -15,7 +15,7 @@ on:
             # - 'pipeline'
         # paths:
         #     - 'Application1/**'
-    workflow_dispatch:
+    # workflow_dispatch:
         
 
 jobs:
